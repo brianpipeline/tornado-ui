@@ -1,0 +1,2 @@
+type: "node20"
+envsToDeployTo: ["dev"]

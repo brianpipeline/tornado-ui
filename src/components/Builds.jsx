@@ -9,7 +9,7 @@ export default function Builds() {
     for (;;) {
       let response;
       try {
-        response = await axios.get("/pollAllBuilds", {
+        response = await axios.get("http://localhost:8080/pollAllBuilds", {
           headers: tag && { "If-None-Match": tag, Prefer: "wait=90" },
         });
       } catch (e) {
@@ -18,8 +18,8 @@ export default function Builds() {
         await new Promise((resolve) => setTimeout(resolve, 500));
         continue;
       }
-      tag = response.headers.etag;
-      setBuilds(response.data);
+      tag = response.data.version;
+      setBuilds(response.data.builds);
     }
   }
 
