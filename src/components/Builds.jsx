@@ -9,7 +9,7 @@ export default function Builds() {
     for (;;) {
       let response;
       try {
-        response = await axios.get("http://localhost:8080/pollAllBuilds", {
+        response = await axios.get("https://tornado-api-dev-fyxjwz74fq-uc.a.run.app/pollAllBuilds", {
           headers: tag && { "If-None-Match": tag, Prefer: "wait=90" },
         });
       } catch (e) {
